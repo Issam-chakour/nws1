@@ -74,7 +74,40 @@
         <h2>من نحن</h2>
     </div>
 
+<!--  -->
 
+<footer>
+
+<div class="col-md-4 d-flex">
+
+	  <!-- As a link -->
+<nav class="navbar">
+  <a class="navbar-brand" href="about.php">من نحن </a>
+</nav>
+<nav class="navbar">
+  <a class="navbar-brand" href="about.php">اتصل بنا   </a>
+</nav>
+<nav class="navbar">
+  <a class="navbar-brand" href="about.php"> COVID-19 </a>
+</nav>
+	<div class="social-media">
+		<p class="d-flex" id="footer-icon">
+			<a href="#" class="d-flex align-items-center justify-content-center "><span
+					class="fa fa-facebook fa-2x "><i class="sr-only">Facebook</i></span></a>
+			<a href="#" class="d-flex align-items-center justify-content-center"><span
+					class="fa fa-twitter fa-2x"><i class="sr-only">Twitter</i></span></a>
+			<a href="#" class="d-flex align-items-center justify-content-center"><span
+					class="fa fa-instagram fa-2x"><i class="sr-only">Instagram</i></span></a>
+			<a href="#" class="d-flex align-items-center justify-content-center"><span
+					class="fa fa-youtube fa-2x"><i class="sr-only">youtube</i></span></a>
+		</p>
+	</div>
+</div>
+    </ul>
+  </div>
+ 
+ 
+</footer>
 
 
     <!-- bootstrap links -->

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Scheherazade&display=swap');
 
 #nav-icon{
  margin-right: 650px;
@@ -33,7 +35,7 @@ footer{
 }
 #footer-icon{ 
 
-    margin: 30%  80% 0% 0%;
+   /* icons footer */
 
 }
 #footer-icon a span{
@@ -47,6 +49,29 @@ footer{
     transition: 1s;
    }
 
+   .posts{
+       border: 2px solid #021859;
+       border-radius: 3%;
+       padding: 4%;
+       margin: 2%;
+   }
+
+.img-posts{
+    width: 100%;
+    height: 300px;
+}
+
+.details{
+    font-family: 'Scheherazade', serif;
+    font-size: x-large;
+}
+
+.topic-post{
+    font-family: 'Jomhuria', cursive;
+/* font-family: 'Scheherazade', serif; */
+}
+  
+
 /*  MEDIA */
  @media only screen and (max-width: 800px) {
      #nav-bg li  ul {
@@ -58,7 +83,7 @@ footer{
 #nav-bg li ul li a {
     color:#0c0404;
 }
-#nav-bg li ul li a {
+#nav-bg li ul li a:hover {
     color:#ffffff;
 }
 #nav-icon{

@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
 	<title> home </title>
@@ -8,13 +8,12 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 	
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/styleh.css">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
 
 	
 </head>
@@ -38,7 +37,7 @@
 		الأخبار
         </a>
         <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
-		<li><a class="dropdown-item   active " href="nat_news.php">الرئيسية </a></li>
+		<li><a class="dropdown-item   active " href="homepage.php">الرئيسية </a></li>
           <li><a class="dropdown-item " href="nat_news.php"> الأخبار الوطنية </a></li>
           <li><a class="dropdown-item  " href="int_news.php"> الأخبار الدولية </a></li>
           <li><a class="dropdown-item " href="sports_news.php"> الأخبار الرياضية </a></li>
@@ -72,11 +71,20 @@
     </ul>
   </div>
 </nav>
+<!-- header -->
+<div class="container">
+<div class="row">
+<div class="col-12">
+<h1 >HEADER2</h1> 
+</div>
+</div>
+</div>
 
-	
-
+<!-- body -->
+<div class="container">
+  <div class="row">
   <!-- all news-->
-  <div>
+  <div class="col-md-9">
     <?php
     // connect to database
     $db = mysqli_connect('localhost', 'root', '', 'newsmar');
@@ -89,35 +97,32 @@
       die("Error in database");
     }
     ?>
-    <?php
 
+    <?php
     while ($row = mysqli_fetch_assoc($result)) {
 
+echo "<div class='posts' >" ;
+echo '<h2 class="topic-post" >' . $row['topic'] . '</h2>';
+echo '<p>' . ' كاتب المقال : ' . $row['author']  .'</p>';
+echo '<p>' . 'تاريخ النشر : ' . $row['datecreated'] . '</p>';
+echo '<img class="img-posts" src="../img/img.jpg" alt="news">' ;
+echo '<p class="details" >' . $row['details'] . '</p>';
+echo  '<div>';
 
-      echo '<p>' . $row['topic'] . '</p>';
-      echo '<p>' . $row['details'] . '</p>';
-      echo '<p>' . ' كاتب المقال : ' . $row['author'] . '</p>';
-      echo '<p>' . '  تاريخ النشر : ' . $row['datecreated'] . '</p>';
-    } ?>
+echo '</div>';
+echo "</div>" ;
+} ?>
   </div>
-
+ 
 
   <!-- end ... news-->
-
-
-
-
-	<!-- bootstrap link -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
-
-</body>
-
-<footer>
+  <div class="col-md-3" id="side">
+      side
+    </div>
+    
+  </div>
+</div>
+  <footer>
 
 <div class="col-md-4 d-flex">
 
@@ -125,17 +130,13 @@
 <nav class="navbar">
   <a class="navbar-brand" href="about.php">من نحن </a>
 </nav>
-
-<!-- As a heading -->
 <nav class="navbar">
-  <span class="navbar-brand" href="callus.php">اتصل بنا </span>
+  <a class="navbar-brand" href="about.php">اتصل بنا   </a>
 </nav>
-<!-- As a heading -->
 <nav class="navbar">
-  <span class="navbar-brand"href="about.php"> COVID-19  </span>
+  <a class="navbar-brand" href="about.php"> COVID-19 </a>
 </nav>
-
-	<div class="social-media">
+	<div class="social-media" >
 		<p class="d-flex" id="footer-icon">
 			<a href="#" class="d-flex align-items-center justify-content-center "><span
 					class="fa fa-facebook fa-2x "><i class="sr-only">Facebook</i></span></a>
@@ -153,4 +154,16 @@
  
  
 </footer>
+
+
+	<!-- bootstrap link -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
+
+</body>
+
 </html>

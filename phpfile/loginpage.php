@@ -2,8 +2,10 @@
 $message = '';
 $error = '';
 $error_signup = '';
+
 // connect to database
 $db = mysqli_connect('localhost', 'root', '', 'newsmar');
+
 //  <!-- sign in -->
 
 if (isset($_POST["login"])) {
@@ -15,6 +17,8 @@ if (isset($_POST["login"])) {
     $results = mysqli_query($db, $query);
 
     session_start();
+
+
     $ps = $_POST["Password"];
     while ($row = mysqli_fetch_assoc($results)) {
         if ($row["username"] === $_POST["username"] && password_verify($_POST["password"], $row["password"])) {
