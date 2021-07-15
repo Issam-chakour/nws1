@@ -1,6 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Scheherazade&display=swap');
 
+body{
+    
+}
+marquee{
+    
+    margin-top: 20px;
+   
+}
+
+.link{
+    text-decoration: none !important;
+    color: black !important;
+}
 #nav-icon{
  margin-right: 650px;
  margin-top: 5px;
@@ -50,10 +63,8 @@ footer{
    }
 
    .posts{
-       border: 2px solid #021859;
-       border-radius: 3%;
-       padding: 4%;
-       margin: 2%;
+      
+    
    }
 
 .img-posts{
@@ -69,6 +80,11 @@ footer{
 .topic-post{
     font-family: 'Jomhuria', cursive;
 /* font-family: 'Scheherazade', serif; */
+}
+
+.title{
+    display: inline-block
+    
 }
   
 
@@ -98,4 +114,12 @@ footer{
 
   } 
 
+  .height{
+      height: 200px !important;
+      cursor: pointer;
+  }
+  .height:hover {
+      transform: translateY(-1px);
+  }
  
+  

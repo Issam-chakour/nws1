@@ -8,20 +8,40 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 	
-	<link rel="stylesheet" href="../css/styleh.css">
+	<link rel="stylesheet" href="../css/style.css">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--  -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+	<!--  -->
 
 
+	<!-- BOOTSTRAP -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+
+	<!--  -->
+
+	
+
+	
+
 
 	
 </head>
 
 <body dir="rtl">
-	<div>
-	<h1>NEWS</h1>
-	</div>
+<marquee behavior="slide" direction="right"  > <?php 
+  // connect to database
+  $db = mysqli_connect('localhost', 'root', '', 'newsmar');
+
+  $sql = "select * from news";
+    $data = mysqli_query($db, $sql);
+while ($row = mysqli_fetch_assoc($data)) {
+	echo "  <p class='title' >" .$row['topic'] ." ". '<i class="far fa-newspaper"></i>' . "  "  . "</p>";
+ }
+?>
+</marquee>
+
 
 <nav class="navbar navbar-expand-lg navbar-dark" id="nav-bg" >
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,14 +77,17 @@
 	  <div class="col-md-2 d-flex" >
 	<div class="social-media">
 		<p class="d-flex" id="nav-icon" >
-			<a href="#" class="d-flex align-items-center justify-content-center "><span
-					class="fa fa-facebook "><i class="sr-only">Facebook</i></span></a>
-			<a href="#" class="d-flex align-items-center justify-content-center"><span
-					class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			<a href="#" class="d-flex align-items-center justify-content-center"><span
-					class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			<a href="#" class="d-flex align-items-center justify-content-center"><span
-					class="fa fa-youtube"><i class="sr-only">youtube</i></span></a>
+			<a href="#" class="d-flex align-items-center justify-content-center ">
+			<i class="fab fa-facebook-f"></i></a>
+			<a href="#" class="d-flex align-items-center justify-content-center">
+			<i class="fab fa-instagram"></i>
+			</a>
+			<a href="#" class="d-flex align-items-center justify-content-center">
+			<i class="fab fa-twitter"></i>
+			</a>
+			<a href="#" class="d-flex align-items-center justify-content-center">
+			<i class="fab fa-youtube"></i>
+			</a>
 		</p>
 	</div>
 </div>
@@ -81,44 +104,84 @@
 </div>
 
 <!-- body -->
-<div class="container">
+<div class="mx-3">
   <div class="row">
   <!-- all news-->
-  <div class="col-md-9">
-    <?php
+  <?php
     // connect to database
     $db = mysqli_connect('localhost', 'root', '', 'newsmar');
-
-
-    $query = "select * from news ";
+	
+	
+    $query = "select * from news order by id desc ";
     $result = mysqli_query($db, $query);
-
+	
     if (!$result) {
-      die("Error in database");
+		die("Error in database");
     }
+
+
+	$sql = "select * from news order by id desc limit 5";
+    $data = mysqli_query($db, $sql);
+	
+    if (!$result) {
+		die("Error in database");
+    }
+
     ?>
 
-    <?php
-    while ($row = mysqli_fetch_assoc($result)) {
 
-echo "<div class='posts' >" ;
-echo '<h2 class="topic-post" >' . $row['topic'] . '</h2>';
-echo '<p>' . ' كاتب المقال : ' . $row['author']  .'</p>';
-echo '<p>' . 'تاريخ النشر : ' . $row['datecreated'] . '</p>';
-echo '<img class="img-posts" src="../img/img.jpg" alt="news">' ;
-echo '<p class="details" >' . $row['details'] . '</p>';
-echo  '<div>';
-
-echo '</div>';
-echo "</div>" ;
-} ?>
+	<div class="col-md-3" id="side">
+		<div class="row">
+		<?php
+			while ($row = mysqli_fetch_assoc($data)) { ?>
+			<div class="col-md-12">
+			<div class="card" style="width: 18rem;">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><?php echo $row['topic'] ?></li>
+					<li class="list-group-item">كاتب المقال:  <?php echo $row['author'] ?></li>
+				</ul>
+			</div>	
+			</div>
+			
+			
+			
+		<?php } ?>
+	</div>
   </div>
+
+
+<div class="col-md-9">
+	<div class="row">
+<?php
+    while ($row = mysqli_fetch_assoc($result)) { ?>
+	 <div class="col-md-6">
+		<a class="link" href="news.php?id=<?php echo $row['id'] ?>">
+	 <div class="card mb-3 height" style="max-width: 540px">
+	 <div class="row g-0">
+		<div class="col-md-4">
+		<img src="../img/img.jpg" class="img-fluid rounded-start" alt="...">
+		</div>
+		<div class="col-md-8">
+		<div class="card-body">
+			<h5 class="card-title"><?php echo $row['topic'] ?></h5>
+			<p class="card-text">كاتب المقال:  <?php echo $row['author'] ?>  </p>
+			<p class="card-text"><small class="text-muted">تاريخ النشر: <?php echo $row['datecreated'] ?>   </small></p>
+		</div>
+	 </div>
+	</div>
+	</div>
+	</a>
+</div>
+	
+	
+	
+<?php } ?>
+</div>
+</div>
+<!-- end ... news-->
+
  
 
-  <!-- end ... news-->
-  <div class="col-md-3" id="side">
-      side
-    </div>
     
   </div>
 </div>
@@ -139,13 +202,13 @@ echo "</div>" ;
 	<div class="social-media" >
 		<p class="d-flex" id="footer-icon">
 			<a href="#" class="d-flex align-items-center justify-content-center "><span
-					class="fa fa-facebook fa-2x "><i class="sr-only">Facebook</i></span></a>
+			class="fab fa-facebook-f"><i class="sr-only">Facebook</i></span></a>
 			<a href="#" class="d-flex align-items-center justify-content-center"><span
-					class="fa fa-twitter fa-2x"><i class="sr-only">Twitter</i></span></a>
+			class="fab fa-twitter"><i class="sr-only">Twitter</i></span></a>
 			<a href="#" class="d-flex align-items-center justify-content-center"><span
-					class="fa fa-instagram fa-2x"><i class="sr-only">Instagram</i></span></a>
+			class="fab fa-instagram"><i class="sr-only">Instagram</i></span></a>
 			<a href="#" class="d-flex align-items-center justify-content-center"><span
-					class="fa fa-youtube fa-2x"><i class="sr-only">youtube</i></span></a>
+			class="fab fa-youtube"><i class="sr-only">youtube</i></span></a>
 		</p>
 	</div>
 </div>
