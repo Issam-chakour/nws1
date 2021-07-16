@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Scheherazade&display=swap');
 
 body{
-    
+  
 }
 marquee{
     
-    margin-top: 20px;
+    background-color: #021859;
+    color: #ffffff;
    
 }
 
@@ -86,10 +87,17 @@ footer{
     display: inline-block
     
 }
-  
+  @media screen and (max-width: 800px) {
+    #side{
+        display: none;
+    }
+    .height{
+        height:  640px !important;
+    }
+  }
 
 /*  MEDIA */
- @media only screen and (max-width: 800px) {
+ @media only screen and (max-width: 576px) {
      #nav-bg li  ul {
     color: #021859 !important;
     background-color: #ffffff !important;
@@ -111,11 +119,14 @@ footer{
 #nav-bg li {
  margin-left: auto; 
 }
+#side{
+    display: none;
+}
 
   } 
 
   .height{
-      height: 200px !important;
+      height: 200px ;
       cursor: pointer;
   }
   .height:hover {

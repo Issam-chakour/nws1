@@ -8,7 +8,7 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 	
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/styleh.css">
 
 	<!--  -->
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -30,7 +30,7 @@
 </head>
 
 <body dir="rtl">
-<marquee behavior="slide" direction="right"  > <?php 
+<marquee  direction="right"> <?php 
   // connect to database
   $db = mysqli_connect('localhost', 'root', '', 'newsmar');
 
@@ -134,15 +134,14 @@ while ($row = mysqli_fetch_assoc($data)) {
 		<div class="row">
 		<?php
 			while ($row = mysqli_fetch_assoc($data)) { ?>
-			<div class="col-md-12">
+			<div class="col-md-12 ">
 			<div class="card" style="width: 18rem;">
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item"><?php echo $row['topic'] ?></li>
-					<li class="list-group-item">كاتب المقال:  <?php echo $row['author'] ?></li>
+					<li class="list-group-item">تاريخ النشر:  <?php echo $row['datecreated'] ?></li>
 				</ul>
 			</div>	
 			</div>
-			
 			
 			
 		<?php } ?>
@@ -154,14 +153,14 @@ while ($row = mysqli_fetch_assoc($data)) {
 	<div class="row">
 <?php
     while ($row = mysqli_fetch_assoc($result)) { ?>
-	 <div class="col-md-6">
+	 <div class="col-md-6 col-xs-12">
 		<a class="link" href="news.php?id=<?php echo $row['id'] ?>">
-	 <div class="card mb-3 height" style="max-width: 540px">
+	 <div class="card mb-3 height" >
 	 <div class="row g-0">
-		<div class="col-md-4">
-		<img src="../img/img.jpg" class="img-fluid rounded-start" alt="...">
+		<div class="col-md-4 col-sm-12">
+	<img src="../img/img.jpg" class="img-fluid rounded-start" alt="post">
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-8 col-sm-12">
 		<div class="card-body">
 			<h5 class="card-title"><?php echo $row['topic'] ?></h5>
 			<p class="card-text">كاتب المقال:  <?php echo $row['author'] ?>  </p>
@@ -179,15 +178,11 @@ while ($row = mysqli_fetch_assoc($data)) {
 </div>
 </div>
 <!-- end ... news-->
-
- 
-
-    
   </div>
 </div>
   <footer>
 
-<div class="col-md-4 d-flex">
+<div class="col-md-12 d-flex">
 
 	  <!-- As a link -->
 <nav class="navbar">
